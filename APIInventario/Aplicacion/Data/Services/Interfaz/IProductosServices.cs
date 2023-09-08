@@ -6,5 +6,6 @@ namespace APISysVentas.Aplicacion.Data.Services.Interfaz
     public interface IProductosServices
     {
         Task<List<productos>> GetAll();
+        Task<productos> GetById(int Id);
     }
 }

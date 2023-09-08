@@ -24,5 +24,16 @@ namespace APISysVentas.Aplicacion.Configuration
 
             return Ok(getProductos);
         }
+
+        [HttpGet("{Id}")]
+        public async Task<IActionResult> Get(int Id) 
+        {
+            var getByIdProducto = await _ProductosServices.GetById(Id);
+            if (getByIdProducto == null)
+                return BadRequest("EL ID NO COINCIDE CON NINGUN PRODUCTOS");
+
+            return Ok(getByIdProducto);
+        
+        }
     }
 }

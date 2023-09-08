@@ -25,7 +25,7 @@ namespace APISysVentas.Aplicacion.Data.Services.Repository
 
             var getProductos = await patridgeDbContext.productos.ToListAsync();
             return getProductos;
-
+            #region PROCEDIMIENTO ALMACENADO 
             //List<productosDto> list = new();
 
             //using var cn = new MySqlConnection(conexion);
@@ -58,7 +58,13 @@ namespace APISysVentas.Aplicacion.Data.Services.Repository
             //}
 
             //return list;
+            #endregion
+        }
 
+        public async Task<productos> GetById(int Id)
+        {
+            var getByIdProductos = await patridgeDbContext.productos.FirstOrDefaultAsync(e => e.Id_producto == Id);
+            return getByIdProductos;
         }
     }
 }

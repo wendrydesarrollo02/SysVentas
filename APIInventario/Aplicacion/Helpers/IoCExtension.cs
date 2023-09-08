@@ -40,7 +40,7 @@ namespace APISysVentas.Aplicacion.Helpers
         {
             var serviceVersion = new MySqlServerVersion(new Version(3, 3, 0));
             string connectionString = Configuration.GetConnectionString("APIInventarioPatridgeDbContext");
-            services.AddDbContext<APIInventarioPatridgeDbContext>(db => db.UseMySql("Server=localhost;Database=sysventadb;Uid=root;Pwd=;", serviceVersion));
+            services.AddDbContext<APIInventarioPatridgeDbContext>(db => db.UseMySql("Server=192.168.12.207;Database=sysventasdb;Uid=root;Pwd=;", serviceVersion));
             services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<APIInventarioPatridgeDbContext>();
 
             //db.UseMySQL("Server=localhost;Database=sysventadb;Uid=root;Pwd=;", dbMySql =>
