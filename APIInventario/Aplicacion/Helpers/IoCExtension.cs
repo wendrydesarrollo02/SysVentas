@@ -5,6 +5,7 @@ using APISysVentas.Aplicacion.Services.Interfaz;
 using APISysVentas.Aplicacion.Services.Repository;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
@@ -37,29 +38,29 @@ namespace APISysVentas.Aplicacion.Helpers
         //Service API Connection DB MySQL
         public static IServiceCollection AddSysVentasServicesDb(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddDbContext<APIInventarioPatridgeDbContext>(db =>
-            {
-                db.UseMySQL("Server=127.0.0.1;Database=sysventasdb;Uid=root;Pwd=;", dbMySql =>
-                {
-                });
-                db.UseLazyLoadingProxies();
+            var serviceVersion = new MySqlServerVersion(new Version(3, 3, 0));
+            string connectionString = Configuration.GetConnectionString("APIInventarioPatridgeDbContext");
+            services.AddDbContext<APIInventarioPatridgeDbContext>(db => db.UseMySql("Server=localhost;Database=sysventadb;Uid=root;Pwd=;", serviceVersion));
+            services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<APIInventarioPatridgeDbContext>();
 
-            });
+            //db.UseMySQL("Server=localhost;Database=sysventadb;Uid=root;Pwd=;", dbMySql =>
+            //{
+            //});
+            //db.UseLazyLoadingProxies();
 
             services.AddScoped<IAPIInventarioPatridgeDbContext>(set => set.GetService<APIInventarioPatridgeDbContext>());
             return services;
         }
 
         //Service 
-        public static IServiceCollection AddSysVentasService(this IServiceCollection services) 
+        public static IServiceCollection AddSysVentasService(this IServiceCollection services)
         {
             services.AddScoped<IAuthenticationService, AuthenticationService>();
             services.AddScoped<ITokenSevice, TokenService>();
             services.AddScoped<IProductosServices, ProductosRepoServices>();
 
-
             return services;
-        
+
         }
 
     }

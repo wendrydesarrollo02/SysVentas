@@ -17,6 +17,7 @@ namespace APISysVentas.Aplicacion.Data.Context
         }
 
         public virtual DbSet<Users> Users { get; set; }
+        public virtual DbSet<productos> productos { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

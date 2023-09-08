@@ -1,6 +1,6 @@
 ﻿namespace APISysVentas.Aplicacion.Dominio.Dtos
 {
-    public class ProductosDto
+    public class productosDto
     {
         public int Id_producto { get; set; }
         public string nombre_producto { get; set; }

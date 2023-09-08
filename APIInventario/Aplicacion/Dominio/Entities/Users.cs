@@ -1,7 +1,10 @@
-﻿namespace APISysVentas.Aplicacion.Dominio.Entities
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace APISysVentas.Aplicacion.Dominio.Entities
 {
     public class Users
     {
+        [Key]
         public int UserId { get; set; }
         public string UserName { get; set; }
         public string Email { get; set; }

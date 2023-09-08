@@ -6,5 +6,6 @@ namespace APISysVentas.Aplicacion.Services.Interfaz
     public interface IAPIInventarioPatridgeDbContext
     {
         DbSet<Users> Users { get; set; }
+        DbSet<productos> productos { get; set; }
     }
 }
