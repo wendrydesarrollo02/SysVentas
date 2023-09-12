@@ -1,7 +1,7 @@
 ﻿using APISysVentas.Aplicacion.Aauthentication.Interfaz;
 using APISysVentas.Aplicacion.Dominio.Dtos;
-using APISysVentas.Aplicacion.Dominio.Entities;
 using APISysVentas.Aplicacion.Services.Interfaz;
+using APISysVentas.Models;
 using AutoMapper;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
@@ -28,7 +28,7 @@ namespace APISysVentas.Controllers
 
         }
 
-        [HttpPost("Register")]
+        [HttpPost("register")]
         public async Task<IActionResult> Register(UsersRegisterDto usersRegisterDto)
         {
             usersRegisterDto.Email = usersRegisterDto.Email.ToLower(); //PARA PASAR EL USUARIO A MINUSCULA
@@ -45,14 +45,14 @@ namespace APISysVentas.Controllers
 
         }
 
-        [HttpPost("{Login}")]
+        [HttpPost("Login")]
         public async Task<IActionResult> Login(UsersLoginDto usersLoginDto)
         {
             var userFromRepo = await _AuthenticationService.LoginUser(usersLoginDto.Email, usersLoginDto.PasswordUser);
             if (userFromRepo == null)
                 return Unauthorized();
 
-            var userMap = _Mapper.Map<UsersListDto>(usersLoginDto);
+            var userMap = _Mapper.Map<UsersListDto>(userFromRepo);
             var tokenSer = _TokenSevice.CreateToken(userFromRepo);
 
             return Ok(new

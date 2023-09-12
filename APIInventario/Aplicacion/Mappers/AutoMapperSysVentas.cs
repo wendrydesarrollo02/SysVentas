@@ -1,5 +1,5 @@
 ﻿using APISysVentas.Aplicacion.Dominio.Dtos;
-using APISysVentas.Aplicacion.Dominio.Entities;
+using APISysVentas.Models;
 using AutoMapper;
 
 namespace APISysVentas.Aplicacion.Mappers

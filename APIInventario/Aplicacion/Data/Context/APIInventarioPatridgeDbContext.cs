@@ -2,6 +2,7 @@
 using APISysVentas.Aplicacion.Configuration;
 using APISysVentas.Aplicacion.Dominio.Entities;
 using APISysVentas.Aplicacion.Services.Interfaz;
+using APISysVentas.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
@@ -17,6 +18,7 @@ namespace APISysVentas.Aplicacion.Data.Context
         }
 
         public virtual DbSet<Users> Users { get; set; }
+       // public virtual DbSet<Usuarios> Usuarios { get; set; }
         public virtual DbSet<productos> productos { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

@@ -1,4 +1,4 @@
-﻿using APISysVentas.Aplicacion.Dominio.Entities;
+﻿using APISysVentas.Models;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace APISysVentas.Aplicacion.Configuration

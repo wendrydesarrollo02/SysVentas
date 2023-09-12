@@ -1,4 +1,4 @@
-﻿using APISysVentas.Aplicacion.Dominio.Entities;
+﻿using APISysVentas.Models;
 
 namespace APISysVentas.Aplicacion.Aauthentication.Interfaz
 {

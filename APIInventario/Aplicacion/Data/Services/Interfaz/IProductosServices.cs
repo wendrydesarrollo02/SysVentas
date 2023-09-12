@@ -7,5 +7,7 @@ namespace APISysVentas.Aplicacion.Data.Services.Interfaz
     {
         Task<List<productos>> GetAll();
         Task<productos> GetById(int Id);
+        Task<productos> GetByName(string names);
+        Task<List<productos>> GetByCategoria(string categoria);
     }
 }

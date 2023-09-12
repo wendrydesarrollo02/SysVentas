@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace APISysVentas.Aplicacion.Dominio.Entities
+namespace APISysVentas.Models
 {
     public class Users
     {

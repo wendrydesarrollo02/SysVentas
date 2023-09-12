@@ -1,18 +1,18 @@
 ﻿using APISysVentas.Aplicacion.Aauthentication.Interfaz;
 using APISysVentas.Aplicacion.Data.Context;
-using APISysVentas.Aplicacion.Dominio.Entities;
+using APISysVentas.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.EntityFrameworkCore;
 using System.Text;
 
 namespace APISysVentas.Aplicacion.Aauthentication.Repository
 {
-    public class AuthenticationService : IAuthenticationServices
+    public class AuthenticationServices : IAuthenticationServices
     {
 
         private readonly APIInventarioPatridgeDbContext _PatridgeDbContext;
 
-        public AuthenticationService(APIInventarioPatridgeDbContext dbContext)
+        public AuthenticationServices(APIInventarioPatridgeDbContext dbContext)
         {
             _PatridgeDbContext = dbContext;
         }
@@ -34,7 +34,7 @@ namespace APISysVentas.Aplicacion.Aauthentication.Repository
             if (loginUser == null)
                 return null;
 
-            if (!VerificarPasswordHash(password, loginUser.PasswordHash!, loginUser.PasswordSalt!))
+            if (VerificarPasswordHash(password, loginUser.PasswordHash, loginUser.PasswordSalt))
                 return null;
 
             return loginUser;

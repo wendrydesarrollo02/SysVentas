@@ -1,7 +1,8 @@
-﻿using APISysVentas.Aplicacion.Dominio.Entities;
-using APISysVentas.Aplicacion.Services.Interfaz;
+﻿using APISysVentas.Aplicacion.Services.Interfaz;
+using APISysVentas.Models;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
+//using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
@@ -18,28 +19,28 @@ namespace APISysVentas.Aplicacion.Services.Repository
         }
         public string CreateToken(Users users)
         {
-            var claims = new List<Claim>()
-            {
-             new Claim(JwtRegisteredClaimNames.NameId, users.Email!)
-            };
+            //var claims = new List<Claim>()
+            //{
+            // new Claim(JwtRegisteredClaimNames.NameId, users.Email)
+            //};
 
-            //Varibles 
-            var credencialesToken = new SigningCredentials(_SymetricSecurity, SecurityAlgorithms.HmacSha256Signature);
-            var tokenDescription = new SecurityTokenDescriptor()
-            {
-                Subject = new ClaimsIdentity(claims),
-                Expires = DateTime.Now.AddDays(1),
-                SigningCredentials = credencialesToken
+            ////Varibles 
+            //var credencialesToken = new SigningCredentials(_SymetricSecurity, SecurityAlgorithms.HmacSha256Signature);
+            //var tokenDescription = new SecurityTokenDescriptor()
+            //{
+            //    Subject = new ClaimsIdentity(claims),
+            //    Expires = DateTime.Now.AddDays(1),
+            //    SigningCredentials = credencialesToken
 
-                //$(MSBuildProjectName)
-            };
+            //    //$(MSBuildProjectName)
+            //};
 
-            //Variables
-            var tokenHandler = new JwtSecurityTokenHandler();
-            var token = tokenHandler.CreateToken(tokenDescription);
+            ////Variables
+            //var tokenHandler = new JwtSecurityTokenHandler();
+            //var token = tokenHandler.CreateToken(tokenDescription);
 
-            //Retornar la cadena
-            return tokenHandler.WriteToken(token);
+            ////Retornar la cadena
+            return null; //tokenHandler.WriteToken(token);
         }
     }
 }

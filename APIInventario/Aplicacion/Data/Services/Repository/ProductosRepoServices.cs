@@ -18,7 +18,7 @@ namespace APISysVentas.Aplicacion.Data.Services.Repository
             patridgeDbContext = aPIInventarioPatridgeDb;
         }
 
-        public string conexion = "Server=localhost;Database=sysventadb;Uid=root;Pwd=;";
+        //public string conexion = "Data Source=sql10.freesqldatabase.com; database=sql10645379; user=sql10645379; password=Fw9K2BszKr";
         public async Task<List<productos>> GetAll()
         {
 
@@ -61,10 +61,26 @@ namespace APISysVentas.Aplicacion.Data.Services.Repository
             #endregion
         }
 
+        public async Task<List<productos>> GetByCategoria(string categoria)
+        {
+
+
+            //var getByCategoria = await  patridgeDbContext.productos.FirstOrDefaultAsync(x => x.Categoria == categoria);
+
+            var getByCategoria = await patridgeDbContext.productos.Where(x => x.Categoria == categoria).ToListAsync();
+            return getByCategoria;
+        }
+
         public async Task<productos> GetById(int Id)
         {
-            var getByIdProductos = await patridgeDbContext.productos.FirstOrDefaultAsync(e => e.Id_producto == Id);
+            var getByIdProductos = await patridgeDbContext.productos.FirstOrDefaultAsync(x => x.Id_producto == Id);
             return getByIdProductos;
+        }
+
+        public async Task<productos> GetByName(string names)
+        {
+            var getByName = await patridgeDbContext.productos.FirstOrDefaultAsync(x => x.Nombre_producto == names);
+            return getByName;
         }
     }
 }
